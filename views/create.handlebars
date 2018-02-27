@@ -1,0 +1,34 @@
+<div class="create-container">
+  <div class="create-card">
+    <div class="create-column">
+      <h2 class="form-title">Create item</h2>
+      <form class="input-form" action="/items/create" method="post" >
+        {{#each newItem.errors as |error|}}
+          <p class="error">{{error.message}}</p>
+        {{/each}}
+        <label class="form-label" for="title">Title</label>
+        <input id="title-input" name="title" maxlength="50" value=""/>
+        <label class="form-label" for="description">Description</label>
+        <textarea id="description-input" name="description"></textarea>
+        <label class="form-label" for="imageUrl">Image Url</label>
+        <input id="imageUrl-input" name="imageUrl" oninput="handleChange" value=""/>
+        <div class="form-navigation">
+          <a href="/">
+            <img class="back-arrow" src="img/back.svg" alt="back">
+          </a>
+          <button class="button submit-button" id="submit-button" type="submit">
+          <p>Create</p>
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+</div>
+<script>
+var img = document.getElementById('created-image');
+function handleChange(e) {
+img.src = e.target.value;
+}
+document.getElementById('imageUrl-input').oninput = handleChange;
+</script>
